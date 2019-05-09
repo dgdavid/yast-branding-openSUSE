@@ -48,6 +48,20 @@ BuildArch:      noarch
 %description
 Contains necessary theming resources to use YaST2.
 
+%package -n yast2-qt-branding-openSUSE
+Summary:        Theming for YaST2 Qt
+License:        GPL-2.0-only
+Group:          System/YaST
+Requires:       adobe-sourcesanspro-fonts
+Requires:       google-opensans-fonts
+Supplements:    ((yast2 and libyui-qt) and branding-openSUSE)
+Conflicts:      yast2-qt-branding
+Provides:       yast2-qt-branding = %{version}
+BuildArch:      noarch
+
+%description -n yast2-qt-branding-openSUSE
+openSUSE branding for YaST2 Qt, mainly used for installation
+
 %prep
 %setup -n %{name}-%{version}
 
@@ -80,5 +94,8 @@ fi
 %dir %{yast_themedir}/current
 %{yast_themedir}/current/wmconfig
 %config %{_sysconfdir}/icewm
+
+%files -n yast2-qt-branding-SLE
+%{yast_themedir}/current/wizard
 
 %changelog
